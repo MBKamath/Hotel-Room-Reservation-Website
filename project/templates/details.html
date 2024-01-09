@@ -1,0 +1,44 @@
+{% extends 'baselogin.html' %}
+{% block title %} Reservation Details {% endblock title %} 
+{% block form %} 
+
+
+<div class="row"> 
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6">
+        
+        <h1 class="text-center text-info bg-dark ">Reservation Details</h1>
+        <div class="card">
+            <table class="table">
+                <tr class="table-dark">
+                  <th scope="col">Customer email</th>
+                  <th scope="col">Room Type</th>
+                  <th scope="col">Hotel Code</th>
+                  <th scope="col">Number of rooms reserved </th>
+                  <th scope="col">Customer Name </th> 
+                  <th scope="col">Customer Phone </th>
+                </tr>
+              <tbody>
+                {% for post in data %}
+                <tr class="table-dark">
+                  
+                    <td>{{post.uemail}}</td>
+                    <td>{{post.roomtype}}</td>
+                    <td>{{post.hcode}}</td>
+                    <td>{{post.no_of_rooms}}</td>
+                    <td>{{post.uname}}</td>
+                    <td>{{post.uphone}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+    <div class="col-md-3"></div>
+</div>
+
+
+{% endblock form %}

@@ -1,0 +1,121 @@
+{% extends "navbar1.html" %} {% block title %} Book Hotel Room {% endblock title
+%} {% block body %}
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container mt-4">
+  <div class="display-4 text-center text-primary">Book Hotel Room</div>
+  <br />
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        {% include "message.html" %}
+        <h3 class="text-center text-info">Travel-Inn</h3>
+        <div class="card-body bg-light">
+          <form action="/booking" method="post">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control mt-2"
+                value="{{current_user.email}}"
+                readonly
+                name="uemail"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <select
+                id="roomtype"
+                name="roomtype"
+                class="form-control mt-2"
+                required
+              >
+                <option selected>Select the Room type</option>
+                <option value="Regular Room">Regular Room</option>
+                <option value="Semi-Luxury Room">Semi-Luxury Room</option>
+                <option value="Luxury Room">Luxury Room</option>
+                <option value="Luxury Room with Pool">
+                  Luxury Room with Pool
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control mt-2"
+                placeholder="Enter Hotel Code"
+                name="hcode"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="number"
+                class="form-control mt-2"
+                placeholder="Number of rooms"
+                name="nor"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control mt-2"
+                placeholder="Customer Name"
+                name="uname"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control mt-2"
+                placeholder="Phone Number"
+                name="uphone"
+                required
+              />
+            </div>
+            <br />
+            <button type="submit" class="btn btn-info">Book Room</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+        <h2 class="text-center text-white bg-dark">Current Room Availability in Hotels</h2>
+        <table class="table">
+              <tr class="table-dark">
+                <th scope="col">Hotel Code</th>
+                <th scope="col">Hotel Name</th>
+                <th scope="col">Regular Rooms</th>
+                <th scope="col">Semi-Luxury Rooms </th>
+                <th scope="col">Luxury Rooms </th> 
+                <th scope="col">Luxury Pool Rooms </th>
+              </tr>
+            <tbody>
+              {% for post in query %}
+              <tr class="table-info">
+                
+                <td>{{post.hcode}}</td>
+                <td>{{post.hname}}</td>
+                <td>{{post.regularrooms}}</td>
+                <td>{{post.semiluxuryrooms}}</td>
+                <td>{{post.luxuryrooms}}</td>
+                <td>{{post.luxurypoolrooms}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

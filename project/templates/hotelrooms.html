@@ -1,0 +1,81 @@
+{% extends "navbar.html" %} 
+{% block title %} 
+Add The Hotel room details
+{% endblock title %} 
+{% block body %} 
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container mt-4">
+<div class="display-4 text-center text-primary">Add Hotel rooms</div>
+<br>
+    <div class="row">
+        <div class="col-md-4">
+           <div class="card">
+               {% include "message.html" %} 
+<h3 class="text-center text-info">Travel-Inn</h3>
+                <div class="card-body bg-light">
+
+                    <form action="/addroomdetails" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control mt-2" placeholder="Enter the hotel code" name="hcode" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control mt-2"  placeholder="Enter Hotel name" name="hname" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" class="form-control mt-2" placeholder="Regular rooms available" name="regularrooms" required>
+                        </div> 
+                        
+                        <div class="form-group">
+                            <input type="number" class="form-control mt-2" placeholder="Semi-Luxurious rooms available" name="semiluxuryrooms" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" class="form-control mt-2" placeholder="Luxury rooms available" name="luxuryrooms" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" class="form-control mt-2" placeholder="Luxury rooms with pool availability" name="luxurypoolrooms" required>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-info">Add</button>
+                    </form>
+
+                </div>
+
+           </div>
+
+        </div>
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <div class="row g-0">
+                <img src="https://source.unsplash.com/random/600×600/?hotel,resort" class="card-img-top" alt="...">
+                <div class="card-body bg-info">
+                  <h5 class="card-title text-center text-success">The Hotel Info</h5>
+                  <div class="card" style="width: 50rem;">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">Hotel Code --> <b>{{postsdata.hcode}}</b></li>
+                      <li class="list-group-item">Hotel Name --> <b>{{postsdata.hname}}</b></li>
+                      <li class="list-group-item">Regular Rooms available --> <b>{{postsdata.regularrooms}}</b></li>
+                      <li class="list-group-item">Semi-Luxury Rooms available --> <b>{{postsdata.semiluxuryrooms}}</b></li>
+                      <li class="list-group-item">Luxury Rooms available --> <b>{{postsdata.luxuryrooms}}</b></li>
+                      <li class="list-group-item">Luxury Rooms with Pool available --> <b>{{postsdata.luxurypoolrooms}}</b></li>
+                      <li class="list-group-item"><a href="/hedit/{{postsdata.id}}"><i class="fas fa-user-edit">Edit</i></a></li>
+                      <li class="list-group-item"><a href="/hdelete/{{postsdata.id}}"><i class="fas fa-trash">Delete</i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+</div>
+</div>
+
+{% endblock body %} 
